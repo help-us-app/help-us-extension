@@ -1,10 +1,12 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:help_us_extension/pages/plugin_authorize/plugin_authorize.dart';
+import 'package:help_us_extension/pages/wrapper/wrapper.dart';
 import 'package:help_us_extension/utils/app_themes.dart';
+import 'package:help_us_extension/utils/db.dart';
 
-void main() {
+Future<void> main() async {
+  await DB().init();
   runApp(const MyApp());
 }
 
@@ -29,7 +31,7 @@ class MyApp extends StatelessWidget {
       darkTheme: AppThemes.dark,
       debugShowCheckedModeBanner: false,
       home: GestureDetector(
-        child: const PluginAuthorize(),
+        child: const Wrapper(),
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       ),
     );

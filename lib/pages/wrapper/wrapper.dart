@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:help_us_extension/pages/plugin_authorize/plugin_authorize.dart';
+import 'package:help_us_extension/pages/plugin_dashboard/plugin_dashboard.dart';
 
 import 'package:help_us_extension/pages/wrapper/wrapper_bloc.dart';
 
@@ -35,8 +36,9 @@ class WrapperState extends State<Wrapper> {
           Widget child = const LoadingPage();
 
           if (snapshot.hasData) {
-            wrapperBloc.db.clearUser();
-            child = Container();
+            child = PluginDashboard(
+              user: snapshot.data,
+            );
           }
 
           if (snapshot.hasError) {

@@ -9,7 +9,7 @@ import '../../utils/db.dart';
 class PluginAuthorizeBloc {
   Stream<PluginAuthorizeState> stream;
   BehaviorSubject isLoading = BehaviorSubject.seeded(false);
-  bool isBrowser = false;
+  bool isBrowser = true;
   DB db = DB();
 
   PluginAuthorizeBloc() {

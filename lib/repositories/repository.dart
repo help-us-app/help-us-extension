@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import '../objects/location.dart';
 import '../objects/user.dart';
 
 class Repository {
@@ -34,5 +35,34 @@ class Repository {
       log(e.toString());
       return null;
     }
+  }
+
+  static getLocations(String userId) async {
+    try {
+      Response response = await dio.get(
+        "${herokuUrl}location?user_id=$userId",
+      );
+
+      List<Location> locations = [];
+      for (var location in response.data["result"]) {
+        locations.add(Location.fromJson(location));
+      }
+      return locations;
+    } catch (e) {
+      log(e.toString());
+      return null;
+    }
+  }
+
+  static setLocation(String locationId, String userId) async {
+    Response response = await dio.patch(
+      "${directusUrl}items/User/$userId",
+      options: Options(headers: {"Authorization": "Bearer $directusToken"}),
+      data: {
+        "location_id": locationId,
+      },
+    );
+    log("setLocation");
+    return User.fromJson(response.data["data"]);
   }
 }

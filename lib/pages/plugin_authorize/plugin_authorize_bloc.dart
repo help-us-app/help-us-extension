@@ -1,4 +1,5 @@
 import 'package:help_us_extension/repositories/repository.dart';
+import 'package:help_us_extension/utils/const.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -28,8 +29,10 @@ class PluginAuthorizeBloc {
   Future<bool> authorizeUser() async {
     setLoading(true);
     String userId = db.getUser();
-    userId ??= (await Repository.createUser()).id;
-    db.setUser(userId);
+    if (userId == null) {
+      userId = (await Repository.createUser()).id;
+      db.setUser(userId);
+    }
 
     if (userId != null) {
       if (isBrowser) {
@@ -46,11 +49,12 @@ class PluginAuthorizeBloc {
         }
       }
 
-      Future.delayed(const Duration(seconds: 1), () {
+      Future.delayed(const Duration(microseconds: Constant.load), () {
         launchUrlString("${Repository.herokuUrl}oauth/url?user_id=$userId");
-        setLoading(false);
       });
     }
+
+    setLoading(false);
 
     return false;
   }

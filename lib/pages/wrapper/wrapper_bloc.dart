@@ -18,7 +18,11 @@ class WrapperBloc {
     String userId = db.getUser();
     log('userId: $userId');
     if (userId != null) {
-      user.add(await Repository.getUserById(userId));
+      User user = await Repository.getUserById(userId);
+      if (user == null) {
+        this.user.addError("no_user_found");
+      }
+      this.user.add(user);
     } else {
       user.addError("no_user_found");
     }

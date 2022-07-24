@@ -9,8 +9,8 @@ class GradientBackground extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,
-          end: const Alignment(0.9, 2),
-          tileMode: TileMode.decal,
+          end: const Alignment(0.1, 2),
+          tileMode: TileMode.clamp,
           colors: [
             Colors.black,
             Colors.grey[900].withOpacity(0.5),

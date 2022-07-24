@@ -21,7 +21,14 @@ class WrapperBloc {
       User user = await Repository.getUserById(userId);
       if (user == null) {
         this.user.addError("no_user_found");
+        return;
       }
+
+      if (user.merchantId == null) {
+        this.user.addError("no_merchant_found");
+        return;
+      }
+
       this.user.add(user);
     } else {
       user.addError("no_user_found");

@@ -2,11 +2,14 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:help_us_extension/pages/wrapper/wrapper.dart';
+import 'package:help_us_extension/repositories/repository.dart';
 import 'package:help_us_extension/utils/app_themes.dart';
 import 'package:help_us_extension/utils/db.dart';
+import 'package:help_us_extension/utils/remote_configurations.dart';
 
 Future<void> main() async {
   await DB().init();
+  RemoteConfigurations.data = (await Repository.getRemoteConfigurations());
   runApp(const MyApp());
 }
 

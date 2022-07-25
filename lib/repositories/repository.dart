@@ -1,4 +1,6 @@
 import 'dart:developer';
+import 'dart:typed_data';
+import 'package:http_parser/http_parser.dart';
 
 import 'package:dio/dio.dart';
 import '../objects/campaign.dart';
@@ -101,12 +103,15 @@ class Repository {
 
   static Future<bool> createCampaign(Campaign campaign) async {
     try {
+      String imageId = await uploadImage(campaign.image);
+
       var response = await dio.post("${directusUrl}items/Campaign",
           options: Options(headers: {"Authorization": "Bearer $directusToken"}),
           data: {
             "name": campaign.name,
             "description": campaign.description,
             "User": campaign.user.id,
+            "image": imageId,
           });
       String campaignId = response.data["data"]["id"];
 
@@ -119,6 +124,27 @@ class Repository {
     } catch (e) {
       log(e.toString());
       return false;
+    }
+  }
+
+  static uploadImage(Uint8List file) async {
+    try {
+      dynamic response = await dio.post("${directusUrl}files",
+          data: FormData.fromMap({
+            "file": MultipartFile.fromBytes(
+              file,
+              filename: "image",
+              contentType: MediaType("image", "png"),
+            )
+          }),
+          options: Options(headers: {
+            "Content-Type": "multipart/form-data",
+            "Authorization": "Bearer $directusToken"
+          }));
+      return response.data["data"]['id'];
+    } catch (e) {
+      log(e.toString());
+      return null;
     }
   }
 }

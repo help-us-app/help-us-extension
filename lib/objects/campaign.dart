@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:help_us_extension/objects/user.dart';
 
 import 'item.dart';
@@ -6,10 +8,17 @@ class Campaign {
   int id;
   String name;
   User user;
+  Uint8List image;
   String description;
   List<Item> items;
 
-  Campaign({this.user, this.description, this.items, this.id,this.name});
+  Campaign(
+      {this.user,
+      this.description,
+      this.items,
+      this.id,
+      this.name,
+      this.image});
 
   Campaign.fromJson(Map<String, dynamic> json) {
     id = json['id'];

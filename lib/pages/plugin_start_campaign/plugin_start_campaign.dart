@@ -31,15 +31,23 @@ class _PluginStartCampaignState extends State<PluginStartCampaign> {
             return CustomScrollBody(
               isLoading: !state.hasData || state.data.isLoading,
               slivers: [
-                const SliverAppBar(
+                SliverAppBar(
                   floating: true,
                   snap: true,
                   backgroundColor: Colors.transparent,
                   elevation: 0,
-                  flexibleSpace: FlexibleSpaceBar(
+                  flexibleSpace: const FlexibleSpaceBar(
                     title: StartCampaignText(),
                     centerTitle: true,
                   ),
+                  actions: [
+                    IconButton(
+                      icon: const Icon(Icons.attach_file),
+                      onPressed: () async {
+                        bloc.attachImage();
+                      },
+                    ),
+                  ],
                 ),
                 SliverPadding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -96,8 +104,6 @@ class _PluginStartCampaignState extends State<PluginStartCampaign> {
                           ),
                           HelpUsButton(
                             onPressed: () async {
-                              // Uint8List bytesFromPicker =
-                              //     await ImagePickerWeb.getImageAsBytes();
                               await bloc.createCampaign(widget.items);
                               if (!mounted) {
                                 return;

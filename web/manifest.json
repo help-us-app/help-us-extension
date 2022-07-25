@@ -7,7 +7,7 @@
     },
     "action": {
         "default_popup": "index.html",
-        "default_icon": "icons/Icon-maskable-512.png"
+        "default_icon": "icons/Icon.png"
     },
     "manifest_version": 3,
     "permissions": ["storage", "activeTab", "scripting"],

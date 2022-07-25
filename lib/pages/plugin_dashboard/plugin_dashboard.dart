@@ -123,11 +123,6 @@ class _PluginDashboardState extends State<PluginDashboard> {
                                         "${Constant.squareLocationEditPage}${state.data.user.locationId}");
                                   },
                                 ),
-                                HelpUsButton(
-                                  buttonText: "Log out",
-                                  buttonColor: AppColors.red,
-                                  onPressed: () async {},
-                                ),
                               ],
                             ),
                           ),

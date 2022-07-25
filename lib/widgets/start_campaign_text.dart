@@ -17,7 +17,7 @@ class StartCampaignText extends StatelessWidget {
               .textTheme
               .headline6
               .copyWith(
-              fontSize: 23,
+              fontSize: 20,
               fontWeight: FontWeight.bold,
               color: Theme.of(context)
                   .textTheme
@@ -30,7 +30,7 @@ class StartCampaignText extends StatelessWidget {
                   .textTheme
                   .headline6
                   .copyWith(
-                fontSize: 23,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: AppColors.primary,
                 shadows: [

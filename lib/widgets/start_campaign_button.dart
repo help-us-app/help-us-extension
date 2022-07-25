@@ -24,7 +24,8 @@ class StartCampaignButton extends StatelessWidget {
                   SizedBox(
                       width: MediaQuery.of(context).size.width,
                       child: Image.network(
-                        RemoteConfigurations.data["strings"]["start_campaign_button_image"],
+                        RemoteConfigurations.data["strings"]
+                            ["start_campaign_button_image"],
                         fit: BoxFit.cover,
                       )),
                   // Add container with blur effect

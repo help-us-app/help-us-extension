@@ -13,23 +13,14 @@ class StartCampaignText extends StatelessWidget {
       child: RichText(
         text: TextSpan(
           text: RemoteConfigurations.data["strings"]["start_a"],
-          style: Theme.of(context)
-              .textTheme
-              .headline6
-              .copyWith(
+          style: Theme.of(context).textTheme.headline6.copyWith(
               fontSize: 20,
               fontWeight: FontWeight.bold,
-              color: Theme.of(context)
-                  .textTheme
-                  .headline6
-                  .color),
+              color: Theme.of(context).textTheme.headline6.color),
           children: [
             TextSpan(
               text: RemoteConfigurations.data["strings"]["campaign"],
-              style: Theme.of(context)
-                  .textTheme
-                  .headline6
-                  .copyWith(
+              style: Theme.of(context).textTheme.headline6.copyWith(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: AppColors.primary,

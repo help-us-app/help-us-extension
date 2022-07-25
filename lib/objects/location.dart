@@ -15,22 +15,22 @@ class Location {
 
   Location(
       {this.address,
-        this.businessEmail,
-        this.businessName,
-        this.country,
-        this.description,
-        this.currency,
-        this.id,
-        this.languageCode,
-        this.logoUrl,
-        this.merchantId,
-        this.name,
-        this.posBackgroundUrl,
-        this.status});
+      this.businessEmail,
+      this.businessName,
+      this.country,
+      this.description,
+      this.currency,
+      this.id,
+      this.languageCode,
+      this.logoUrl,
+      this.merchantId,
+      this.name,
+      this.posBackgroundUrl,
+      this.status});
 
   Location.fromJson(Map<String, dynamic> json) {
     address =
-    json['address'] != null ? new Address.fromJson(json['address']) : null;
+        json['address'] != null ? new Address.fromJson(json['address']) : null;
     businessEmail = json['business_email'];
     businessName = json['business_name'];
     country = json['country'];
@@ -75,10 +75,10 @@ class Address {
 
   Address(
       {this.addressLine1,
-        this.administrativeDistrictLevel1,
-        this.country,
-        this.locality,
-        this.postalCode});
+      this.administrativeDistrictLevel1,
+      this.country,
+      this.locality,
+      this.postalCode});
 
   Address.fromJson(Map<String, dynamic> json) {
     addressLine1 = json['address_line_1'];

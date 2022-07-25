@@ -34,8 +34,7 @@ class PluginStartCampaignBloc {
   }
 
   attachImage() async {
-    Uint8List bytesFromPicker =
-    await ImagePickerWeb.getImageAsBytes();
+    Uint8List bytesFromPicker = await ImagePickerWeb.getImageAsBytes();
     if (bytesFromPicker == null) {
       return;
     }

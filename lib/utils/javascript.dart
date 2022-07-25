@@ -8,4 +8,3 @@ external dynamic getHtml();
 
 @JS()
 external dynamic getUrl();
-

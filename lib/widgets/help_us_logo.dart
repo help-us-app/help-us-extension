@@ -10,23 +10,20 @@ class HelpUsLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     return RichText(
         text: TextSpan(
-          text: "help ",
+      text: "help ",
+      style: Theme.of(context).textTheme.headline6.copyWith(
+          fontSize: fontSize,
+          fontWeight: FontWeight.bold,
+          color: Theme.of(context).textTheme.headline6.color),
+      children: [
+        TextSpan(
+          text: "us",
           style: Theme.of(context).textTheme.headline6.copyWith(
               fontSize: fontSize,
               fontWeight: FontWeight.bold,
-              color: Theme.of(context).textTheme.headline6.color),
-          children: [
-            TextSpan(
-              text: "us",
-              style: Theme.of(context)
-                  .textTheme
-                  .headline6
-                  .copyWith(
-                  fontSize: fontSize,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.primary),
-            )
-          ],
-        ));
+              color: AppColors.primary),
+        )
+      ],
+    ));
   }
 }

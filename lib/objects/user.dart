@@ -7,12 +7,12 @@ class User {
   String expiresIn;
 
   User(
-      { this.id,
-        this.merchantId,
-        this.locationId,
-        this.accessToken,
-        this.refreshToken,
-        this.expiresIn});
+      {this.id,
+      this.merchantId,
+      this.locationId,
+      this.accessToken,
+      this.refreshToken,
+      this.expiresIn});
 
   User.fromJson(Map<dynamic, dynamic> json) {
     id = json['id'];
@@ -34,4 +34,3 @@ class User {
     return data;
   }
 }
-

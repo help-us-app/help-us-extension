@@ -3,5 +3,6 @@ class Constant {
   static const String amazonCartUrl =
       "https://www.amazon.com/gp/cart/view.html?ref_=nav_cart";
 
-  static const String squareLocationEditPage = "https://squareupsandbox.com/dashboard/locations/";
+  static const String squareLocationEditPage =
+      "https://squareupsandbox.com/dashboard/locations/";
 }

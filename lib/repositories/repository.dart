@@ -1,6 +1,8 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import '../objects/campaign.dart';
+import '../objects/item.dart';
 import '../objects/location.dart';
 import '../objects/user.dart';
 
@@ -71,12 +73,52 @@ class Repository {
       Response response = await dio.get(
           "${directusUrl}items/remote_configurations",
           options:
-          Options(headers: {"Authorization": "Bearer $directusToken"}));
+              Options(headers: {"Authorization": "Bearer $directusToken"}));
       log("getRemoteConfigurations");
       return response.data["data"];
     } catch (e) {
       log(e.toString());
       return null;
+    }
+  }
+
+  static Future<String> createItem(Item item, String campaignId) async {
+    try {
+      var itemJson = item.toJson();
+      itemJson["campaign_id"] = campaignId;
+      Response response = await dio.post(
+        "${directusUrl}items/Item",
+        options: Options(headers: {"Authorization": "Bearer $directusToken"}),
+        data: itemJson,
+      );
+      log("createItem");
+      return response.data["data"]["id"];
+    } catch (e) {
+      log(e.toString());
+      return null;
+    }
+  }
+
+  static Future<bool> createCampaign(Campaign campaign) async {
+    try {
+      var response = await dio.post("${directusUrl}items/Campaign",
+          options: Options(headers: {"Authorization": "Bearer $directusToken"}),
+          data: {
+            "name": campaign.name,
+            "description": campaign.description,
+            "User": campaign.user.id,
+          });
+      String campaignId = response.data["data"]["id"];
+
+      for (var item in campaign.items) {
+        await createItem(item, campaignId);
+      }
+
+      log("createCampaign");
+      return true;
+    } catch (e) {
+      log(e.toString());
+      return false;
     }
   }
 }

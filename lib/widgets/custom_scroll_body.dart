@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../pages/loading_page.dart';
+import '../utils/const.dart';
 import 'gradient_background.dart';
 
 class CustomScrollBody extends StatelessWidget {
@@ -20,7 +21,10 @@ class CustomScrollBody extends StatelessWidget {
           ),
           slivers: slivers,
         ),
-        if (isLoading) const LoadingPage(),
+        AnimatedSwitcher(
+          duration: const Duration(milliseconds: Constant.load),
+          child: isLoading ? const LoadingPage() : Container(),
+        )
       ],
     );
   }

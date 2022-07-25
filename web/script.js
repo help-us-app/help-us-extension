@@ -3,11 +3,11 @@ async function sendCommand(qry) {
     let [tab] = await chrome.tabs.query(queryOptions);
     let message = {query: qry, id: tab.id};
     let response = await chrome.tabs.sendMessage(tab.id, message);
-    return response.result;
+    return response;
 }
 
-async function getAmazonCart() {
-    return await sendCommand("amazon");
+async function getHtml() {
+    return await sendCommand("get_html");
 }
 
 async function getUrl() {

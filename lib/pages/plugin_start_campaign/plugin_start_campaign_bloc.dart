@@ -5,7 +5,6 @@ import 'package:image_picker_web/image_picker_web.dart';
 import 'package:rxdart/rxdart.dart';
 
 import '../../objects/item.dart';
-import '../../objects/user.dart';
 import '../../repositories/repository.dart';
 import '../../utils/db.dart';
 
@@ -61,7 +60,7 @@ class PluginStartCampaignBloc {
       description: description.text,
       items: items,
       image: image,
-      user: User(id: db.getUser()),
+      user: db.getUser(),
     );
     await Repository.createCampaign(campaign);
 

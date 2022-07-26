@@ -18,6 +18,7 @@ import '../../widgets/help_us_button.dart';
 import '../../widgets/help_us_logo.dart';
 import '../../widgets/location_card.dart';
 import '../../widgets/start_campaign_button.dart';
+import '../plugin_manage_pages/plugin_manage_campaigns.dart';
 
 class PluginDashboard extends StatefulWidget {
   final User user;
@@ -111,7 +112,14 @@ class _PluginDashboardState extends State<PluginDashboard> {
                                   },
                                 ),
                                 HelpUsButton(
-                                  onPressed: () async {},
+                                  onPressed: () async {
+                                    if (mounted) {
+                                      Navigator.of(context).push(
+                                          createRoute(PluginManageCampaign(
+                                        locationId: state.data.user.locationId,
+                                      )));
+                                    }
+                                  },
                                   buttonText: 'Manage Campaigns',
                                   buttonColor: AppColors.secondary,
                                 ),

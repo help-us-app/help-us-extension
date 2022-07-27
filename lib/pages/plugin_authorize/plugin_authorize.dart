@@ -27,52 +27,6 @@ class _PluginAuthorizeState extends State<PluginAuthorize> {
               return CustomScrollBody(
                   isLoading: !state.hasData || state.data.isLoading,
                   slivers: [
-                    SliverToBoxAdapter(
-                        child: SizedBox(
-                      height: 300,
-                      child: Center(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            const HelpUsLogo(
-                              fontSize: 50,
-                            ),
-                            RichText(
-                              text: TextSpan(
-                                text: 'make ',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyText1
-                                    .copyWith(
-                                      fontSize: 20,
-                                    ),
-                                children: [
-                                  TextSpan(
-                                    text: 'wishes',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyText1
-                                        .copyWith(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                            color: AppColors.primary),
-                                  ),
-                                  TextSpan(
-                                    text: ' come true!',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyText1
-                                        .copyWith(
-                                          fontSize: 20,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    )),
                     SliverPadding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       sliver: SliverFillRemaining(
@@ -81,6 +35,43 @@ class _PluginAuthorizeState extends State<PluginAuthorize> {
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
+                              const HelpUsLogo(
+                                fontSize: 50,
+                              ),
+                              RichText(
+                                text: TextSpan(
+                                  text: 'make ',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyText1
+                                      .copyWith(
+                                    fontSize: 20,
+                                  ),
+                                  children: [
+                                    TextSpan(
+                                      text: 'wishes',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyText1
+                                          .copyWith(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                          color: AppColors.primary),
+                                    ),
+                                    TextSpan(
+                                      text: ' come true!',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyText1
+                                          .copyWith(
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              const SizedBox(height: 20),
+
                               HelpUsButton(
                                 onPressed: () async {
                                   bool result = await bloc.authorizeUser();
@@ -91,7 +82,7 @@ class _PluginAuthorizeState extends State<PluginAuthorize> {
                                     }
                                   }
                                 },
-                                buttonText: 'authorize with Square',
+                                buttonText: 'Authorize with Square',
                                 buttonColor: AppColors.secondary,
                               ),
                             ],

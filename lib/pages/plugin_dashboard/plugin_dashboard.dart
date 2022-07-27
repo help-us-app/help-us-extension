@@ -18,6 +18,7 @@ import '../../widgets/help_us_button.dart';
 import '../../widgets/help_us_logo.dart';
 import '../../widgets/location_card.dart';
 import '../../widgets/start_campaign_button.dart';
+import '../../widgets/two_tone_text.dart';
 import '../plugin_manage_pages/plugin_manage_campaigns.dart';
 
 class PluginDashboard extends StatefulWidget {
@@ -47,21 +48,36 @@ class _PluginDashboardState extends State<PluginDashboard> {
               isLoading: !state.hasData || state.data.isLoading,
               slivers: state.hasData
                   ? [
-                      SliverPadding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        sliver: SliverAppBar(
-                          title: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: const [
-                              HelpUsLogo(
-                                hasForChrome: true,
-                                fontSize: 30,
+                      state.data.user.locationId != null
+                          ? SliverPadding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 20),
+                              sliver: SliverAppBar(
+                                title: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: const [
+                                    HelpUsLogo(
+                                      hasForChrome: true,
+                                      fontSize: 30,
+                                    ),
+                                  ],
+                                ),
+                                actions: const [Icon(FontAwesome.share)],
                               ),
-                            ],
-                          ),
-                          actions: const [Icon(FontAwesome.share)],
-                        ),
-                      ),
+                            )
+                          : const SliverAppBar(
+                              floating: true,
+                              snap: true,
+                              backgroundColor: Colors.transparent,
+                              elevation: 0,
+                              flexibleSpace: FlexibleSpaceBar(
+                                title: TwoToneText(
+                                  firstText: "Select a ",
+                                  secondText: "Location",
+                                ),
+                                centerTitle: true,
+                              ),
+                            ),
                       if (state.data.user.locationId == null)
                         SliverPadding(
                           padding: const EdgeInsets.symmetric(horizontal: 20),

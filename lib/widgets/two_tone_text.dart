@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
 
 import '../utils/app_colors.dart';
-import '../utils/remote_configurations.dart';
 
-class StartCampaignText extends StatelessWidget {
-  const StartCampaignText({Key key}) : super(key: key);
+class TwoToneText extends StatelessWidget {
+  final String firstText, secondText, tag;
+  const TwoToneText({Key key, this.firstText, this.secondText, this.tag})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Hero(
-      tag: "start_campaign_text",
+      tag: tag,
       child: RichText(
         text: TextSpan(
-          text: RemoteConfigurations.data["strings"]["start_a"],
+          text: firstText,
           style: Theme.of(context).textTheme.headline6.copyWith(
               fontSize: 20, color: Theme.of(context).textTheme.headline6.color),
           children: [
             TextSpan(
-              text: RemoteConfigurations.data["strings"]["campaign"],
+              text: secondText,
               style: Theme.of(context).textTheme.headline6.copyWith(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,

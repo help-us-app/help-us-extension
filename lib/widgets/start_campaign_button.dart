@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:help_us_extension/widgets/start_campaign_text.dart';
+import 'package:help_us_extension/widgets/two_tone_text.dart';
 
 import '../utils/remote_configurations.dart';
 
@@ -35,7 +35,13 @@ class StartCampaignButton extends StatelessWidget {
                       color: Colors.black.withOpacity(0.8),
                     ),
                   ),
-                  const Center(child: StartCampaignText()),
+                   Center(child: TwoToneText(
+                    tag: "start_campaign_text",
+                    firstText: RemoteConfigurations.data["strings"]
+                    ["start_a"],
+                    secondText: RemoteConfigurations.data["strings"]
+                    ["campaign"],
+                  )),
                 ],
               ),
             ),

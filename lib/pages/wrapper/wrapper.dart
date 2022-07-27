@@ -4,7 +4,6 @@ import 'package:help_us_extension/pages/plugin_dashboard/plugin_dashboard.dart';
 
 import 'package:help_us_extension/pages/wrapper/wrapper_bloc.dart';
 
-import '../../utils/const.dart';
 import '../loading_page.dart';
 
 class Wrapper extends StatefulWidget {
@@ -45,10 +44,7 @@ class WrapperState extends State<Wrapper> {
             child = const PluginAuthorize();
           }
 
-          return AnimatedSwitcher(
-            duration: const Duration(milliseconds: Constant.load),
-            child: child,
-          );
+          return child;
         });
   }
 }

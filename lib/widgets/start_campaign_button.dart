@@ -16,7 +16,7 @@ class StartCampaignButton extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(2.0),
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(20),
             child: SizedBox(
               height: 49,
               child: Stack(
@@ -31,7 +31,7 @@ class StartCampaignButton extends StatelessWidget {
                   // Add container with blur effect
                   Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
+                      borderRadius: BorderRadius.circular(20),
                       color: Colors.black.withOpacity(0.8),
                     ),
                   ),

@@ -10,6 +10,7 @@ class AppThemes {
       cardColor: HexColor("#1E1E1E"),
       textSelectionTheme: TextSelectionThemeData(
         selectionColor: AppColors.primary,
+        cursorColor: AppColors.primary,
       ),
       indicatorColor: AppColors.primary,
       scaffoldBackgroundColor: Colors.black,

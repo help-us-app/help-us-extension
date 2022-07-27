@@ -84,7 +84,6 @@ class _PluginStartCampaignState extends State<PluginStartCampaign> {
                             controller: bloc.title,
                             enabled: true,
                             value: "Campaign Name",
-                            prefix: Icons.favorite,
                           ),
                           HelpUsTextField(
                             obscure: false,

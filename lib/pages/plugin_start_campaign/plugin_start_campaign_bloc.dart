@@ -40,7 +40,7 @@ class PluginStartCampaignBloc {
     return bytesFromPicker;
   }
 
-  createCampaign(List<Item> items) async {
+  createCampaign(List<Item> items, String locationId) async {
     setLoading(true);
     List<Item> duplicatedItems = [];
 
@@ -56,12 +56,11 @@ class PluginStartCampaignBloc {
     items.addAll(duplicatedItems);
 
     Campaign campaign = Campaign(
-      name: title.text,
-      description: description.text,
-      items: items,
-      image: image,
-      user: db.getUser(),
-    );
+        name: title.text,
+        description: description.text,
+        items: items,
+        image: image,
+        locationId: locationId);
     await Repository.createCampaign(campaign);
 
     setLoading(false);

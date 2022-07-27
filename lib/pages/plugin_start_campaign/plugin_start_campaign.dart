@@ -11,9 +11,11 @@ import '../../widgets/help_us_text_field.dart';
 import '../../widgets/two_tone_text.dart';
 
 class PluginStartCampaign extends StatefulWidget {
+  final String locationId;
   final List<Item> items;
 
-  const PluginStartCampaign({Key key, this.items}) : super(key: key);
+  const PluginStartCampaign({Key key, this.items, this.locationId})
+      : super(key: key);
 
   @override
   State<PluginStartCampaign> createState() => _PluginStartCampaignState();
@@ -102,7 +104,8 @@ class _PluginStartCampaignState extends State<PluginStartCampaign> {
                           HelpUsButton(
                             onPressed: () async {
                               await showAttachDialog(context);
-                              await bloc.createCampaign(widget.items);
+                              await bloc.createCampaign(
+                                  widget.items, widget.locationId);
                               if (!mounted) {
                                 return;
                               }

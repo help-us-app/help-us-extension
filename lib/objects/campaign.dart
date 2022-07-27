@@ -3,13 +3,13 @@ import 'item.dart';
 class Campaign {
   int id;
   String name;
-  String user;
+  String locationId;
   dynamic image;
   String description;
   List<Item> items;
 
   Campaign(
-      {this.user,
+      {this.locationId,
       this.description,
       this.items,
       this.id,
@@ -19,7 +19,7 @@ class Campaign {
   Campaign.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
-    user = json['User'];
+    locationId = json['location_id'];
     image = json['image'];
     description = json['description'];
     if (json['items'] != null) {
@@ -33,9 +33,7 @@ class Campaign {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
-    if (user != null) {
-      data['User'] = user;
-    }
+    data['location_id'] = locationId;
     data['name'] = name;
     data['description'] = description;
     if (items != null) {

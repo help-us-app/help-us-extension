@@ -45,6 +45,13 @@ class PluginDashboardBloc {
     await updateUser(userId);
     setIsLoading(false);
   }
+
+  Future<void> removeLocationId(String userId) async {
+    setIsLoading(true);
+    await Repository.setLocation(null, userId);
+    await updateUser(userId);
+    setIsLoading(false);
+  }
 }
 
 class PluginDashboardState {

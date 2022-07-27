@@ -121,6 +121,8 @@ class _PluginDashboardState extends State<PluginDashboard> {
                                           Navigator.of(context).push(
                                               createRoute(PluginStartCampaign(
                                             items: items,
+                                            locationId:
+                                                state.data.user.locationId,
                                           )));
                                         }
                                         break;
@@ -154,9 +156,11 @@ class _PluginDashboardState extends State<PluginDashboard> {
                                   },
                                 ),
                                 HelpUsButton(
-                                  buttonText: "View Page",
+                                  buttonText: "Change Location",
                                   buttonColor: AppColors.secondary,
-                                  onPressed: () async {},
+                                  onPressed: () async {
+                                    bloc.removeLocationId(widget.user.id);
+                                  },
                                 ),
                               ],
                             ),

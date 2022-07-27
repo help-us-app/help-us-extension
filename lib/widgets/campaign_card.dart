@@ -31,15 +31,17 @@ class CampaignCard extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Row(
             children: [
-              Image.network(
-                "${Repository.directusUrl}assets/$image",
-                fit: BoxFit.cover,
-                height: 80,
-                width: 80,
-              ),
-              const SizedBox(
-                width: 10,
-              ),
+              if (image != null)
+                Image.network(
+                  "${Repository.directusUrl}assets/$image",
+                  fit: BoxFit.cover,
+                  height: 80,
+                  width: 80,
+                ),
+                const SizedBox(
+                  width: 10,
+                  height: 80,
+                ),
               Padding(
                 padding: const EdgeInsets.only(left: 5),
                 child: Column(

@@ -110,7 +110,7 @@ class Repository {
           data: {
             "name": campaign.name,
             "description": campaign.description,
-            "User": campaign.user,
+            "location_id": campaign.locationId,
             "image": imageId,
           });
       String campaignId = response.data["data"]["id"];
@@ -151,7 +151,7 @@ class Repository {
   static getCampaigns(String locationId) async {
     try {
       Response response = await dio.get(
-        "${directusUrl}items/Campaign?filter%5BUser%5D%5Blocation_id%5D%5B_eq%5D=$locationId&",
+        "${directusUrl}items/Campaign?filter[location_id][_eq]=$locationId",
         options: Options(headers: {"Authorization": "Bearer $directusToken"}),
       );
       log("getCampaigns");
@@ -165,4 +165,5 @@ class Repository {
       return null;
     }
   }
+
 }

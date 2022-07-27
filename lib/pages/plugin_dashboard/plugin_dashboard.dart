@@ -115,16 +115,26 @@ class _PluginDashboardState extends State<PluginDashboard> {
                                     url = await promiseToFuture(url);
                                     switch (url) {
                                       case Constant.amazonCartUrl:
-                                        List<Item> items =
-                                            CartParser.parseAmazonCart(webpage);
-                                        if (mounted) {
-                                          Navigator.of(context).push(
-                                              createRoute(PluginStartCampaign(
-                                            items: items,
-                                            locationId:
-                                                state.data.user.locationId,
-                                          )));
+                                        try {
+                                          List<Item> items =
+                                              CartParser.parseAmazonCart(
+                                                  webpage);
+                                          if (mounted) {
+                                            Navigator.of(context).push(
+                                                createRoute(PluginStartCampaign(
+                                              items: items,
+                                              locationId:
+                                                  state.data.user.locationId,
+                                            )));
+                                          }
+                                        } catch (e) {
+                                          if (mounted) {
+                                            Messenger.sendSnackBarMessage(
+                                                context,
+                                                "There was an error parsing the cart. Please refresh the page and try again.");
+                                          }
                                         }
+
                                         break;
                                       default:
                                         if (mounted) {

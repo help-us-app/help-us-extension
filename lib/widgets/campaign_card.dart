@@ -4,7 +4,7 @@ import 'package:help_us_extension/repositories/repository.dart';
 import '../utils/app_colors.dart';
 
 class CampaignCard extends StatelessWidget {
-  final String title, description, id , image;
+  final String title, description, id, image;
   final VoidCallback onTap;
   const CampaignCard(
       {Key key, this.title, this.description, this.id, this.onTap, this.image})
@@ -31,8 +31,15 @@ class CampaignCard extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Row(
             children: [
-              Image.network("${Repository.directusUrl}assets/$image",height: 100,),
-              const SizedBox(width: 10,),
+              Image.network(
+                "${Repository.directusUrl}assets/$image",
+                fit: BoxFit.cover,
+                height: 80,
+                width: 80,
+              ),
+              const SizedBox(
+                width: 10,
+              ),
               Padding(
                 padding: const EdgeInsets.only(left: 5),
                 child: Column(
@@ -44,8 +51,7 @@ class CampaignCard extends StatelessWidget {
                         style: Theme.of(context).textTheme.headline6.copyWith(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
-                            color:
-                                Theme.of(context).textTheme.headline6.color),
+                            color: Theme.of(context).textTheme.headline6.color),
                         children: [
                           TextSpan(
                             text: " #$id",

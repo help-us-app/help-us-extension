@@ -47,13 +47,19 @@ class _PluginDashboardState extends State<PluginDashboard> {
               isLoading: !state.hasData || state.data.isLoading,
               slivers: state.hasData
                   ? [
-                      const SliverPadding(
-                        padding: EdgeInsets.symmetric(horizontal: 20),
+                      SliverPadding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
                         sliver: SliverAppBar(
-                          title: HelpUsLogo(
-                            fontSize: 30,
+                          title: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: const [
+                              HelpUsLogo(
+                                hasForChrome: true,
+                                fontSize: 30,
+                              ),
+                            ],
                           ),
-                          actions: [Icon(FontAwesome.share)],
+                          actions: const [Icon(FontAwesome.share)],
                         ),
                       ),
                       if (state.data.user.locationId == null)
@@ -130,6 +136,11 @@ class _PluginDashboardState extends State<PluginDashboard> {
                                     launchUrlString(
                                         "${Constant.squareLocationEditPage}${state.data.user.locationId}");
                                   },
+                                ),
+                                HelpUsButton(
+                                  buttonText: "View Page",
+                                  buttonColor: AppColors.secondary,
+                                  onPressed: () async {},
                                 ),
                               ],
                             ),

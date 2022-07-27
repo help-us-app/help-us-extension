@@ -30,35 +30,36 @@ class _PluginManageCampaignState extends State<PluginManageCampaign> {
             return CustomScrollBody(
                 isLoading: !state.hasData || state.data.isLoading,
                 slivers: state.hasData
-                ? [
-                  const SliverAppBar(
-                    floating: true,
-                    snap: true,
-                    backgroundColor: Colors.transparent,
-                    elevation: 0,
-                    flexibleSpace: FlexibleSpaceBar(
-                      title: Text('Manage Campaigns'),
-                      centerTitle: true,
-                    ),
-                  ),
-                  SliverPadding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    sliver: SliverList(
-                      delegate: SliverChildBuilderDelegate(
-                        (context, index) {
-                          return CampaignCard(
-                            id: state.data.campaigns[index].id.toString(),
-                            title: state.data.campaigns[index].name,
-                            image: state.data.campaigns[index].image,
-                            description:
-                                state.data.campaigns[index].description,
-                          );
-                        },
-                        childCount: state.data.campaigns.length,
-                      ),
-                    ),
-                  ),
-                ]: []);
+                    ? [
+                        const SliverAppBar(
+                          floating: true,
+                          snap: true,
+                          backgroundColor: Colors.transparent,
+                          elevation: 0,
+                          flexibleSpace: FlexibleSpaceBar(
+                            title: Text('Manage Campaigns'),
+                            centerTitle: true,
+                          ),
+                        ),
+                        SliverPadding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          sliver: SliverList(
+                            delegate: SliverChildBuilderDelegate(
+                              (context, index) {
+                                return CampaignCard(
+                                  id: state.data.campaigns[index].id.toString(),
+                                  title: state.data.campaigns[index].name,
+                                  image: state.data.campaigns[index].image,
+                                  description:
+                                      state.data.campaigns[index].description,
+                                );
+                              },
+                              childCount: state.data.campaigns.length,
+                            ),
+                          ),
+                        ),
+                      ]
+                    : []);
           }),
     );
   }

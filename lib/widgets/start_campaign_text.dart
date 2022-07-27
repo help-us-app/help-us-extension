@@ -14,9 +14,7 @@ class StartCampaignText extends StatelessWidget {
         text: TextSpan(
           text: RemoteConfigurations.data["strings"]["start_a"],
           style: Theme.of(context).textTheme.headline6.copyWith(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Theme.of(context).textTheme.headline6.color),
+              fontSize: 20, color: Theme.of(context).textTheme.headline6.color),
           children: [
             TextSpan(
               text: RemoteConfigurations.data["strings"]["campaign"],
@@ -26,7 +24,7 @@ class StartCampaignText extends StatelessWidget {
                 color: AppColors.primary,
                 shadows: [
                   Shadow(
-                    blurRadius: 25.0,
+                    blurRadius: 15.0,
                     color: AppColors.primary,
                     offset: const Offset(0, 0),
                   ),

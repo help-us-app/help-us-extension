@@ -31,23 +31,15 @@ class _PluginStartCampaignState extends State<PluginStartCampaign> {
             return CustomScrollBody(
               isLoading: !state.hasData || state.data.isLoading,
               slivers: [
-                SliverAppBar(
+                const SliverAppBar(
                   floating: true,
                   snap: true,
                   backgroundColor: Colors.transparent,
                   elevation: 0,
-                  flexibleSpace: const FlexibleSpaceBar(
+                  flexibleSpace: FlexibleSpaceBar(
                     title: StartCampaignText(),
                     centerTitle: true,
                   ),
-                  actions: [
-                    IconButton(
-                      icon: const Icon(Icons.attach_file),
-                      onPressed: () async {
-                        bloc.attachImage();
-                      },
-                    ),
-                  ],
                 ),
                 SliverPadding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -100,10 +92,10 @@ class _PluginStartCampaignState extends State<PluginStartCampaign> {
                             lines: 3,
                             enabled: true,
                             value: "Campaign Description",
-                            prefix: Icons.description,
                           ),
                           HelpUsButton(
                             onPressed: () async {
+                              await showAttachDialog(context);
                               await bloc.createCampaign(widget.items);
                               if (!mounted) {
                                 return;
@@ -123,6 +115,46 @@ class _PluginStartCampaignState extends State<PluginStartCampaign> {
               ],
             );
           }),
+    );
+  }
+
+  showAttachDialog(BuildContext context) async {
+    await showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return SimpleDialog(
+          title: const Text(
+            'Add a photo to your campaign?',
+            textAlign: TextAlign.center,
+          ),
+          children: <Widget>[
+            SimpleDialogOption(
+              onPressed: () async {
+                bloc.image = await bloc.attachImage();
+                if (mounted) {
+                  if (bloc.image != null) {
+                    Navigator.of(context).pop();
+                  }
+                }
+              },
+              child: const Text(
+                'Yes',
+                textAlign: TextAlign.center,
+              ),
+            ),
+            SimpleDialogOption(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text(
+                'No',
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

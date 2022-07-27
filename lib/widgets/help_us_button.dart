@@ -20,10 +20,10 @@ class HelpUsButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 10, bottom: 5),
       child: InkWell(
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(20),
         onTap: onPressed,
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(20),
           child: Container(
             height: 49,
             color: cond ? Colors.white : buttonColor,

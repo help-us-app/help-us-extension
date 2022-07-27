@@ -37,7 +37,7 @@ class PluginStartCampaignBloc {
     if (bytesFromPicker == null) {
       return;
     }
-    image = bytesFromPicker;
+    return bytesFromPicker;
   }
 
   createCampaign(List<Item> items) async {

@@ -20,6 +20,7 @@ class LoadingPage extends StatelessWidget {
             child: const SafeArea(
               child: Center(
                   child: HelpUsLogo(
+                hasForChrome: true,
                 fontSize: 40,
               )),
             ),

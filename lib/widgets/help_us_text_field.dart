@@ -10,22 +10,19 @@ class HelpUsTextField extends StatelessWidget {
   final dynamic onChanged;
   final dynamic onSubmitted;
   final bool enabled;
-  final IconData suffix, prefix;
 
-  HelpUsTextField(
-      {Key key,
-      @required this.value,
-      @required this.controller,
-      @required this.obscure,
-      this.suffix,
-      this.onSubmitted,
-      this.lines = 1,
-      this.label,
-      @required this.enabled,
-      this.type,
-      this.onChanged,
-      this.prefix})
-      : super(key: key);
+  HelpUsTextField({
+    Key key,
+    @required this.value,
+    @required this.controller,
+    @required this.obscure,
+    this.onSubmitted,
+    this.lines = 1,
+    this.label,
+    @required this.enabled,
+    this.type,
+    this.onChanged,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -50,11 +47,7 @@ class HelpUsTextField extends StatelessWidget {
             ),
             labelText: value,
             floatingLabelBehavior: FloatingLabelBehavior.never,
-            suffixIcon: Icon(suffix),
-            prefixIcon: Icon(prefix),
-            fillColor: Theme.of(context).cardColor
-            // suffixIcon: Icon(AntDesign.car),
-            ),
+            fillColor: Theme.of(context).cardColor),
       ),
     );
   }

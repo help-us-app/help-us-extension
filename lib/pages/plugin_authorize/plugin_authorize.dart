@@ -45,8 +45,8 @@ class _PluginAuthorizeState extends State<PluginAuthorize> {
                                       .textTheme
                                       .bodyText1
                                       .copyWith(
-                                    fontSize: 20,
-                                  ),
+                                        fontSize: 20,
+                                      ),
                                   children: [
                                     TextSpan(
                                       text: 'wishes',
@@ -54,9 +54,9 @@ class _PluginAuthorizeState extends State<PluginAuthorize> {
                                           .textTheme
                                           .bodyText1
                                           .copyWith(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                          color: AppColors.primary),
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                              color: AppColors.primary),
                                     ),
                                     TextSpan(
                                       text: ' come true!',
@@ -64,14 +64,13 @@ class _PluginAuthorizeState extends State<PluginAuthorize> {
                                           .textTheme
                                           .bodyText1
                                           .copyWith(
-                                        fontSize: 20,
-                                      ),
+                                            fontSize: 20,
+                                          ),
                                     ),
                                   ],
                                 ),
                               ),
                               const SizedBox(height: 20),
-
                               HelpUsButton(
                                 onPressed: () async {
                                   bool result = await bloc.authorizeUser();

@@ -58,6 +58,11 @@ class _PluginManageCampaignState extends State<PluginManageCampaign> {
                             ),
                           ),
                         ),
+                        const SliverToBoxAdapter(
+                          child: SizedBox(
+                            height: 30,
+                          ),
+                        )
                       ]
                     : []);
           }),

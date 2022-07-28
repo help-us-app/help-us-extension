@@ -35,12 +35,12 @@ class StartCampaignButton extends StatelessWidget {
                       color: Colors.black.withOpacity(0.8),
                     ),
                   ),
-                   Center(child: TwoToneText(
+                  Center(
+                      child: TwoToneText(
                     tag: "start_campaign_text",
-                    firstText: RemoteConfigurations.data["strings"]
-                    ["start_a"],
+                    firstText: RemoteConfigurations.data["strings"]["start_a"],
                     secondText: RemoteConfigurations.data["strings"]
-                    ["campaign"],
+                        ["campaign"],
                   )),
                 ],
               ),

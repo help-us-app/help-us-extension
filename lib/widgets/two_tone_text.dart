@@ -10,7 +10,7 @@ class TwoToneText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Hero(
-      tag: tag,
+      tag: tag ?? 'two_tone_text',
       child: RichText(
         text: TextSpan(
           text: firstText,

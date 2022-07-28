@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:help_us_extension/utils/app_colors.dart';
 
 class PriceFormatter {
   static Widget numberString(num balance, BuildContext context, num size) {
@@ -11,9 +12,7 @@ class PriceFormatter {
               child: Text(
                 '\$',
                 style: Theme.of(context).textTheme.headline4.copyWith(
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Colors.white
-                        : Colors.black,
+                    color: AppColors.primary,
                     fontWeight: FontWeight.bold,
                     fontSize: size * 0.6),
               ),
@@ -22,9 +21,7 @@ class PriceFormatter {
           TextSpan(
             text: balance.toStringAsFixed(2),
             style: Theme.of(context).textTheme.headline2.copyWith(
-                color: Theme.of(context).brightness == Brightness.dark
-                    ? Colors.white
-                    : Colors.black,
+                color: AppColors.primary,
                 fontWeight: FontWeight.bold,
                 fontSize: size),
           ),

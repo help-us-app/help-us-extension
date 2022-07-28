@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:help_us_extension/pages/plugin_manage_pages/plugin_manage_campaigns_bloc.dart';
+import 'package:help_us_extension/pages/plugin_manage_campaigns/plugin_manage_campaigns_bloc.dart';
 import 'package:help_us_extension/widgets/campaign_card.dart';
 
+import '../../utils/transition.dart';
 import '../../widgets/custom_scroll_body.dart';
+import '../plugin_manage_campaign/plugin_manage_campaign.dart';
 
-class PluginManageCampaign extends StatefulWidget {
+class PluginManageCampaigns extends StatefulWidget {
   final String locationId;
-  const PluginManageCampaign({Key key, this.locationId}) : super(key: key);
+  const PluginManageCampaigns({Key key, this.locationId}) : super(key: key);
 
   @override
-  State<PluginManageCampaign> createState() => _PluginManageCampaignState();
+  State<PluginManageCampaigns> createState() => _PluginManageCampaignsState();
 }
 
-class _PluginManageCampaignState extends State<PluginManageCampaign> {
+class _PluginManageCampaignsState extends State<PluginManageCampaigns> {
   PluginManageCampaignsBloc bloc;
 
   @override
@@ -52,6 +54,18 @@ class _PluginManageCampaignState extends State<PluginManageCampaign> {
                                   image: state.data.campaigns[index].image,
                                   description:
                                       state.data.campaigns[index].description,
+                                  onTap: () {
+                                    if (mounted) {
+                                      Navigator.of(context).pushReplacement(
+                                          createRoute(PluginManageCampaign(
+                                        campaignId: state
+                                            .data.campaigns[index].id
+                                            .toString(),
+                                      )));
+                                    }
+                                  },
+                                  isCompleted:
+                                      state.data.campaigns[index].isCompleted,
                                 );
                               },
                               childCount: state.data.campaigns.length,

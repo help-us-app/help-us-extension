@@ -166,4 +166,27 @@ class Repository {
     }
   }
 
+  static getItems(String campaignId) async {
+    try {
+      Response response = await dio.get(
+        "${directusUrl}items/Item?filter[campaign_id][_eq]=$campaignId",
+        options: Options(headers: {"Authorization": "Bearer $directusToken"}),
+      );
+      log("getItems");
+      List<Item> items = [];
+      for (var item in response.data["data"]) {
+        items.add(Item(
+          title: item["title"],
+          productLink: item["link"],
+          productImage: item["thumbnail"],
+          price: item["price"],
+          purchased: item["purchased"],
+        ));
+      }
+      return items;
+    } catch (e) {
+      log(e.toString());
+      return null;
+    }
+  }
 }

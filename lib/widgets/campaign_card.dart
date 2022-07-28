@@ -6,8 +6,15 @@ import '../utils/app_colors.dart';
 class CampaignCard extends StatelessWidget {
   final String title, description, id, image;
   final VoidCallback onTap;
+  final bool isCompleted;
   const CampaignCard(
-      {Key key, this.title, this.description, this.id, this.onTap, this.image})
+      {Key key,
+      this.title,
+      this.description,
+      this.id,
+      this.onTap,
+      this.image,
+      this.isCompleted})
       : super(key: key);
 
   @override
@@ -38,10 +45,10 @@ class CampaignCard extends StatelessWidget {
                   height: 80,
                   width: 80,
                 ),
-                const SizedBox(
-                  width: 10,
-                  height: 80,
-                ),
+              const SizedBox(
+                width: 10,
+                height: 80,
+              ),
               Padding(
                 padding: const EdgeInsets.only(left: 5),
                 child: Column(
@@ -68,6 +75,35 @@ class CampaignCard extends StatelessWidget {
                         ],
                       ),
                     ),
+                    Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 5),
+                        child: ClipRRect(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(5)),
+                            child: Container(
+                              height: 20,
+                              color: isCompleted
+                                  ? AppColors.primary.withOpacity(0.2)
+                                  : AppColors.red.withOpacity(0.2),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 10),
+                                child: Center(
+                                  child: Text(
+                                    isCompleted ? 'Completed' : 'Not Completed',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .overline
+                                        .copyWith(
+                                            color: isCompleted
+                                                ? AppColors.primary
+                                                : AppColors.red,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 12),
+                                  ),
+                                ),
+                              ),
+                            ))),
                     Text(
                       description,
                       textAlign: TextAlign.start,

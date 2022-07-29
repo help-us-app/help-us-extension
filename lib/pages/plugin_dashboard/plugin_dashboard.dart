@@ -62,7 +62,14 @@ class _PluginDashboardState extends State<PluginDashboard> {
                                     ),
                                   ],
                                 ),
-                                actions: const [Icon(FontAwesome.share)],
+                                actions: [
+                                  InkWell(
+                                    child: const Icon(FontAwesome.share),
+                                    onTap: () {
+                                      launchUrlString('${Constant.helpUsWebUrl}/${widget.user.locationId}/${widget.user.id}');
+                                    },
+                                  )
+                                ],
                               ),
                             )
                           : const SliverAppBar(

@@ -1,5 +1,6 @@
 import 'dart:js_util';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:help_us_extension/pages/plugin_dashboard/plugin_dashboard_bloc.dart';
 import 'package:help_us_extension/pages/plugin_start_campaign/plugin_start_campaign.dart';
@@ -66,7 +67,9 @@ class _PluginDashboardState extends State<PluginDashboard> {
                                   InkWell(
                                     child: const Icon(FontAwesome.share),
                                     onTap: () {
-                                      launchUrlString('${Constant.helpUsWebUrl}/${widget.user.locationId}/${widget.user.id}');
+                                      Clipboard.setData(ClipboardData(text: '${Constant.helpUsWebUrl}/${widget.user.locationId}/${widget.user.id}'));
+                                      Messenger.sendSnackBarMessage(
+                                          context, 'Copied a shareable link to your clipboard.');
                                     },
                                   )
                                 ],

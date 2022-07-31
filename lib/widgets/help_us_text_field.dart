@@ -9,6 +9,7 @@ class HelpUsTextField extends StatelessWidget {
   final TextInputType type;
   final dynamic onChanged;
   final dynamic onSubmitted;
+  final int maxLength;
   final bool enabled;
 
   HelpUsTextField({
@@ -22,6 +23,7 @@ class HelpUsTextField extends StatelessWidget {
     @required this.enabled,
     this.type,
     this.onChanged,
+    this.maxLength,
   }) : super(key: key);
 
   @override
@@ -38,6 +40,7 @@ class HelpUsTextField extends StatelessWidget {
         textInputAction: TextInputAction.done,
         enabled: enabled,
         obscureText: obscure,
+        maxLength: maxLength,
         decoration: InputDecoration(
             isCollapsed: false,
             filled: true,

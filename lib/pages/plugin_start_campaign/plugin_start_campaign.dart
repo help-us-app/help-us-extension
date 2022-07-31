@@ -54,7 +54,7 @@ class _PluginStartCampaignState extends State<PluginStartCampaign> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   sliver: SliverToBoxAdapter(
                     child: SizedBox(
-                      height: 100,
+                      height: 90,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: widget.items.length,

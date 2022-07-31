@@ -104,13 +104,16 @@ class CampaignCard extends StatelessWidget {
                                 ),
                               ),
                             ))),
-                    Text(
-                      description,
-                      textAlign: TextAlign.start,
-                      style: Theme.of(context)
-                          .textTheme
-                          .caption
-                          .copyWith(color: Colors.grey),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.55,
+                      child: Text(
+                        description,
+                        textAlign: TextAlign.start,
+                        style: Theme.of(context)
+                            .textTheme
+                            .caption
+                            .copyWith(color: Colors.grey),
+                      ),
                     ),
                   ],
                 ),

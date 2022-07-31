@@ -54,14 +54,10 @@ class _PluginDashboardState extends State<PluginDashboard> {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 20),
                               sliver: SliverAppBar(
-                                title: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: const [
-                                    HelpUsLogo(
-                                      hasForChrome: true,
-                                      fontSize: 30,
-                                    ),
-                                  ],
+                                backgroundColor: Colors.transparent,
+                                title: const HelpUsLogo(
+                                  hasForChrome: true,
+                                  fontSize: 30,
                                 ),
                                 actions: [
                                   InkWell(

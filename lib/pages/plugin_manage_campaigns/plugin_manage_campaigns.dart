@@ -58,9 +58,8 @@ class _PluginManageCampaignsState extends State<PluginManageCampaigns> {
                                     if (mounted) {
                                       Navigator.of(context).pushReplacement(
                                           createRoute(PluginManageCampaign(
-                                        campaignId: state
-                                            .data.campaigns[index].id
-                                            .toString(),
+                                        campaign: state
+                                            .data.campaigns[index],
                                       )));
                                     }
                                   },

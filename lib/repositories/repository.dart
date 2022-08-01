@@ -127,6 +127,26 @@ class Repository {
     }
   }
 
+  static Future<bool> updateCampaign(Campaign campaign) async {
+    try {
+      String imageId = await uploadImage(campaign.completed);
+      log("imageId: $imageId");
+
+      await dio.patch("${directusUrl}items/Campaign/${campaign.id}",
+          options: Options(headers: {"Authorization": "Bearer $directusToken"}),
+          data: {
+            "completed": imageId,
+            "is_completed": true,
+          });
+
+      log("updateCampaign");
+      return true;
+    } catch (e) {
+      log(e.toString());
+      return false;
+    }
+  }
+
   static uploadImage(Uint8List file) async {
     try {
       dynamic response = await dio.post("${directusUrl}files",

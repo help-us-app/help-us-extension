@@ -8,6 +8,7 @@ class Campaign {
   String description;
   List<Item> items;
   bool isCompleted;
+  dynamic completed;
 
   Campaign(
       {this.locationId,
@@ -16,7 +17,8 @@ class Campaign {
       this.id,
       this.name,
       this.image,
-      this.isCompleted});
+      this.isCompleted,
+      this.completed});
 
   Campaign.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -31,6 +33,7 @@ class Campaign {
       });
     }
     isCompleted = json['is_completed'];
+    completed = json['confirmation_image'];
   }
 
   Map<String, dynamic> toJson() {

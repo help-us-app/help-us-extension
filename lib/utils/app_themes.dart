@@ -27,20 +27,4 @@ class AppThemes {
               color: Colors.white, fontSize: 20, fontWeight: FontWeight.w600),
           headline1:
               TextStyle(color: Colors.white, fontWeight: FontWeight.w600)));
-
-  static ThemeData light = ThemeData(
-      brightness: Brightness.light,
-      scaffoldBackgroundColor: HexColor("#f5f5f5"),
-      indicatorColor: AppColors.primary,
-      splashColor: Colors.transparent,
-      appBarTheme: AppBarTheme(backgroundColor: Colors.grey[20]),
-      iconTheme: IconThemeData(color: Colors.blueGrey[900]),
-      fontFamily: "Mont",
-      textTheme: const TextTheme(
-          headline6: TextStyle(
-              color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
-          headline5: TextStyle(
-              color: Colors.black, fontSize: 20, fontWeight: FontWeight.w600),
-          headline1:
-              TextStyle(color: Colors.black, fontWeight: FontWeight.w600)));
 }

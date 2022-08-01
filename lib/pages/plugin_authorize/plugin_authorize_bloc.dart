@@ -42,6 +42,10 @@ class PluginAuthorizeBloc {
 
     return false;
   }
+
+  clearUser() {
+    db.clearUser();
+  }
 }
 
 class PluginAuthorizeState {

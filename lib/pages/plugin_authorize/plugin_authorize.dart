@@ -73,6 +73,7 @@ class _PluginAuthorizeState extends State<PluginAuthorize> {
                               const SizedBox(height: 20),
                               HelpUsButton(
                                 onPressed: () async {
+                                  bloc.clearUser();
                                   bool result = await bloc.authorizeUser();
                                   if (result) {
                                     if (mounted) {

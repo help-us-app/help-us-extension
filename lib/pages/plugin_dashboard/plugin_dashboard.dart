@@ -63,9 +63,11 @@ class _PluginDashboardState extends State<PluginDashboard> {
                                   InkWell(
                                     child: const Icon(FontAwesome.share),
                                     onTap: () {
-                                      Clipboard.setData(ClipboardData(text: '${Constant.helpUsWebUrl}/${widget.user.locationId}/${widget.user.id}'));
-                                      Messenger.sendSnackBarMessage(
-                                          context, 'Copied a shareable link to your clipboard.');
+                                      Clipboard.setData(ClipboardData(
+                                          text:
+                                              '${Constant.helpUsWebUrl}${widget.user.locationId}/${widget.user.id}'));
+                                      Messenger.sendSnackBarMessage(context,
+                                          'Copied a shareable link to your clipboard.');
                                     },
                                   )
                                 ],

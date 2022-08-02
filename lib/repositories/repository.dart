@@ -196,11 +196,13 @@ class Repository {
       List<Item> items = [];
       for (var item in response.data["data"]) {
         items.add(Item(
+          id: item["id"].toString(),
           title: item["title"],
           productLink: item["link"],
           productImage: item["thumbnail"],
           price: item["price"],
           purchased: item["purchased"],
+          boughtBy: item["bought_by"],
         ));
       }
       return items;

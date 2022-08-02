@@ -80,10 +80,10 @@ class _PluginManageCampaignState extends State<PluginManageCampaign> {
                                   return ItemRow(
                                       title: state.data.items[index].title,
                                       price: state.data.items[index].price,
-                                      image:
-                                          state.data.items[index].productImage,
+                                      image: state.data.items[index].productImage,
+                                      boughtBy: state.data.items[index].boughtBy,
                                       isPurchased:
-                                          state.data.items[index].purchased,
+                                      state.data.items[index].purchased,
                                       onTap: () {});
                                 },
                                 childCount: state.data.items.length,

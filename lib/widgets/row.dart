@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:help_us_extension/utils/app_colors.dart';
 
+import '../utils/app_colors.dart';
 import '../utils/price_formatter.dart';
 
 class ItemRow extends StatelessWidget {
   final String title, price, image;
   final VoidCallback onTap;
   final bool isPurchased;
-  final String hero;
+  final String boughtBy;
 
   const ItemRow(
       {Key key,
       this.onTap,
-      this.hero,
       this.title,
       this.price,
       this.image,
-      this.isPurchased})
+      this.isPurchased,
+      this.boughtBy})
       : super(key: key);
 
   @override
@@ -36,9 +36,8 @@ class ItemRow extends StatelessWidget {
                 15.0,
               ),
               side: BorderSide(
-                  color: Theme.of(context).brightness == Brightness.dark
-                      ? Colors.grey[800]
-                      : Colors.grey[200],
+                  color:
+                      Colors.grey[800],
                   width: 0.2)),
           elevation: 0,
           shadowColor: Colors.grey,
@@ -68,6 +67,16 @@ class ItemRow extends StatelessWidget {
                         style: theme.textTheme.headline6,
                       ),
                     ),
+                    if (boughtBy != null)
+                      Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 5),
+                          child: Text(
+                            boughtBy,
+                            style: theme.textTheme.subtitle1.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey[500],
+                                fontSize: 12),
+                          )),
                     if (isPurchased != null)
                       Padding(
                           padding: const EdgeInsets.symmetric(vertical: 5),

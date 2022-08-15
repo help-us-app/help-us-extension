@@ -13,7 +13,7 @@ class Repository {
   static String directusUrl = "https://help-us.directus.app/";
   static String directusToken = "VjL2EY9ju8efp37w8ZUobcrcn99vL4ce";
   static String herokuUrl = "https://help-us-api.herokuapp.com/";
-  static String herokuToken = "";
+  static String herokuToken = "b57fbb6c-7b71-445e-8bd9-908b4251a595";
 
   static getUserById(String userId) async {
     try {
@@ -45,6 +45,7 @@ class Repository {
     try {
       Response response = await dio.get(
         "${herokuUrl}location?user_id=$userId",
+        options: Options(headers: {"Authorization": "Bearer $herokuToken"}),
       );
 
       List<Location> locations = [];

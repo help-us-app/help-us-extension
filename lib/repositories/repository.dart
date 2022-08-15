@@ -9,10 +9,10 @@ import '../objects/user.dart';
 
 class Repository {
   static Dio dio = Dio();
-  static String directusUrl = "https://help-us.directus.app/";
-  static String directusToken = "VjL2EY9ju8efp37w8ZUobcrcn99vL4ce";
-  static String herokuUrl = "https://api.help-us-app.com/";
-  static String herokuToken = "umM1rU0n7jTetbPG0XTlRuYAjxnukT7Y";
+  static String directusUrl = const String.fromEnvironment("DIRECTUS_URL");
+  static String directusToken = const String.fromEnvironment("DIRECTUS_TOKEN");
+  static String herokuUrl = const String.fromEnvironment("HEROKU_URL");
+  static String herokuToken = const String.fromEnvironment("HEROKU_TOKEN");
 
   static getUserById(String userId) async {
     try {

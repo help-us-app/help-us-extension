@@ -36,7 +36,6 @@ class Item {
       );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
         "title": title,
         "price": price,
         "quantity": quantity,

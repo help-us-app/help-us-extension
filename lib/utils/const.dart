@@ -6,5 +6,5 @@ class Constant {
   static const String squareLocationEditPage =
       "https://squareupsandbox.com/dashboard/locations/";
 
-  static const String helpUsWebUrl = "https://help-us-web-4932.web.app/";
+  static const String helpUsWebUrl = "https://help-us-app.com/";
 }

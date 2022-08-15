@@ -1,7 +1,6 @@
 import 'dart:developer';
 import 'dart:typed_data';
 import 'package:http_parser/http_parser.dart';
-
 import 'package:dio/dio.dart';
 import '../objects/campaign.dart';
 import '../objects/item.dart';
@@ -12,8 +11,8 @@ class Repository {
   static Dio dio = Dio();
   static String directusUrl = "https://help-us.directus.app/";
   static String directusToken = "VjL2EY9ju8efp37w8ZUobcrcn99vL4ce";
-  static String herokuUrl = "https://help-us-api.herokuapp.com/";
-  static String herokuToken = "b57fbb6c-7b71-445e-8bd9-908b4251a595";
+  static String herokuUrl = "https://api.help-us-app.com/";
+  static String herokuToken = "umM1rU0n7jTetbPG0XTlRuYAjxnukT7Y";
 
   static getUserById(String userId) async {
     try {

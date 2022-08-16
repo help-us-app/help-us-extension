@@ -211,4 +211,30 @@ class Repository {
       return null;
     }
   }
+
+  static scrapeCart(String webpage, String url) async {
+    try {
+      Response response = await dio.post(
+        "${herokuUrl}scrape",
+        data: {"url": url, "body": webpage},
+        options: Options(headers: {"Authorization": "Bearer $herokuToken"}),
+      );
+      log("scrapeCart");
+      dynamic result = response.data["result"];
+      List<Item> items = [];
+      for (var item in result) {
+        items.add(Item(
+          title: item["title"],
+          productLink: item["productLink"],
+          productImage: item["productImage"],
+          price: item["price"],
+          quantity: item["quantity"],
+        ));
+      }
+      return items;
+    } catch (e) {
+      log(e.toString());
+      return null;
+    }
+  }
 }

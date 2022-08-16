@@ -1,3 +1,4 @@
+import 'package:help_us_extension/objects/item.dart';
 import 'package:rxdart/rxdart.dart';
 
 import '../../objects/location.dart';
@@ -51,6 +52,10 @@ class PluginDashboardBloc {
     await Repository.setLocation(null, userId);
     await updateUser(userId);
     setIsLoading(false);
+  }
+
+  Future<List<Item>> scrapeCart(String webpage, String url) async {
+    return await Repository.scrapeCart(webpage, url);
   }
 }
 

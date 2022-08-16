@@ -10,7 +10,6 @@ import 'package:url_launcher/url_launcher_string.dart';
 import '../../objects/item.dart';
 import '../../objects/user.dart';
 import '../../utils/app_colors.dart';
-import '../../utils/cart_parser.dart';
 import '../../utils/const.dart';
 import '../../utils/javascript.dart';
 import '../../utils/messenger.dart';
@@ -121,35 +120,37 @@ class _PluginDashboardState extends State<PluginDashboard> {
                                     var webpage = await getHtml();
                                     webpage = await promiseToFuture(webpage);
                                     url = await promiseToFuture(url);
-                                    switch (url) {
-                                      case Constant.amazonCartUrl:
-                                        try {
-                                          List<Item> items =
-                                              CartParser.parseAmazonCart(
-                                                  webpage);
-                                          if (mounted) {
-                                            Navigator.of(context).push(
-                                                createRoute(PluginStartCampaign(
-                                              items: items,
-                                              locationId:
-                                                  state.data.user.locationId,
-                                            )));
-                                          }
-                                        } catch (e) {
-                                          if (mounted) {
-                                            Messenger.sendSnackBarMessage(
-                                                context,
-                                                "There was an error parsing the cart. Please refresh the page and try again.");
-                                          }
-                                        }
-
-                                        break;
-                                      default:
-                                        if (mounted) {
-                                          Messenger.sendSnackBarMessage(context,
-                                              "Sorry, we don't support this page.");
-                                        }
-                                        break;
+                                    if (webpage == null){
+                                      if (mounted) {
+                                        Messenger.sendSnackBarMessage(context,
+                                          'Could not load the webpage. Please try again later.');
+                                      }
+                                      return;
+                                    }
+                                    List<Item> items =
+                                        await bloc.scrapeCart(webpage, url);
+                                    if (items == null) {
+                                      if (mounted) {
+                                        Messenger.sendSnackBarMessage(
+                                          context,
+                                            "Sorry, we don't support this page.");
+                                      }
+                                      return;
+                                    }
+                                    if (items.isEmpty) {
+                                      if (mounted) {
+                                        Messenger.sendSnackBarMessage(
+                                          context,
+                                          'No items found in the cart. Please add items to the cart and try again.');
+                                      }
+                                      return;
+                                    }
+                                    if (mounted) {
+                                      Navigator.of(context)
+                                          .push(createRoute(PluginStartCampaign(
+                                        items: items,
+                                        locationId: state.data.user.locationId,
+                                      )));
                                     }
                                   },
                                 ),

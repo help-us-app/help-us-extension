@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:help_us_extension/objects/campaign.dart';
 import 'package:help_us_extension/pages/plugin_manage_campaign/plugin_manage_campaign_bloc.dart';
@@ -80,10 +79,12 @@ class _PluginManageCampaignState extends State<PluginManageCampaign> {
                                   return ItemRow(
                                       title: state.data.items[index].title,
                                       price: state.data.items[index].price,
-                                      image: state.data.items[index].productImage,
-                                      boughtBy: state.data.items[index].boughtBy,
+                                      image:
+                                          state.data.items[index].productImage,
+                                      boughtBy:
+                                          state.data.items[index].boughtBy,
                                       isPurchased:
-                                      state.data.items[index].purchased,
+                                          state.data.items[index].purchased,
                                       onTap: () {});
                                 },
                                 childCount: state.data.items.length,

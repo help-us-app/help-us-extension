@@ -120,10 +120,10 @@ class _PluginDashboardState extends State<PluginDashboard> {
                                     var webpage = await getHtml();
                                     webpage = await promiseToFuture(webpage);
                                     url = await promiseToFuture(url);
-                                    if (webpage == null){
+                                    if (webpage == null) {
                                       if (mounted) {
                                         Messenger.sendSnackBarMessage(context,
-                                          'Could not load the webpage. Please try again later.');
+                                            'Could not load the webpage. Please try again later.');
                                       }
                                       return;
                                     }
@@ -131,17 +131,15 @@ class _PluginDashboardState extends State<PluginDashboard> {
                                         await bloc.scrapeCart(webpage, url);
                                     if (items == null) {
                                       if (mounted) {
-                                        Messenger.sendSnackBarMessage(
-                                          context,
+                                        Messenger.sendSnackBarMessage(context,
                                             "Sorry, we don't support this page.");
                                       }
                                       return;
                                     }
                                     if (items.isEmpty) {
                                       if (mounted) {
-                                        Messenger.sendSnackBarMessage(
-                                          context,
-                                          'No items found in the cart. Please add items to the cart and try again.');
+                                        Messenger.sendSnackBarMessage(context,
+                                            'No items found in the cart. Please add items to the cart and try again.');
                                       }
                                       return;
                                     }

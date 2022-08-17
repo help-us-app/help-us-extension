@@ -42,8 +42,7 @@ class _PluginStartCampaignState extends State<PluginStartCampaign> {
                     title: TwoToneText(
                       tag: "start_campaign_text",
                       firstText: "Make a ",
-                      secondText: "Wishlist"
-                          ,
+                      secondText: "Wishlist",
                     ),
                     centerTitle: true,
                   ),

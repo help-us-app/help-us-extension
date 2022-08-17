@@ -5,16 +5,15 @@ Item itemFromJson(String str) => Item.fromJson(json.decode(str));
 String itemToJson(Item data) => json.encode(data.toJson());
 
 class Item {
-  Item({
-    this.id,
-    this.title,
-    this.price,
-    this.quantity,
-    this.productLink,
-    this.productImage,
-    this.purchased,
-    this.boughtBy
-  });
+  Item(
+      {this.id,
+      this.title,
+      this.price,
+      this.quantity,
+      this.productLink,
+      this.productImage,
+      this.purchased,
+      this.boughtBy});
   String id;
   String title;
   String price;

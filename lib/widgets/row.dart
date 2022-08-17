@@ -35,10 +35,7 @@ class ItemRow extends StatelessWidget {
               borderRadius: BorderRadius.circular(
                 15.0,
               ),
-              side: BorderSide(
-                  color:
-                      Colors.grey[800],
-                  width: 0.2)),
+              side: BorderSide(color: Colors.grey[800], width: 0.2)),
           elevation: 0,
           shadowColor: Colors.grey,
           child: Padding(

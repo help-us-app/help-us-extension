@@ -70,20 +70,6 @@ class Repository {
     return User.fromJson(response.data["data"]);
   }
 
-  static Future<Map<String, dynamic>> getRemoteConfigurations() async {
-    try {
-      Response response = await dio.get(
-          "${directusUrl}items/remote_configurations",
-          options:
-              Options(headers: {"Authorization": "Bearer $directusToken"}));
-      log("getRemoteConfigurations");
-      return response.data["data"];
-    } catch (e) {
-      log(e.toString());
-      return null;
-    }
-  }
-
   static Future<String> createItem(Item item, String campaignId) async {
     try {
       var itemJson = item.toJson();

@@ -5,7 +5,6 @@ import 'package:help_us_extension/widgets/custom_scroll_body.dart';
 
 import '../../objects/item.dart';
 import '../../utils/app_colors.dart';
-import '../../utils/remote_configurations.dart';
 import '../../widgets/help_us_button.dart';
 import '../../widgets/help_us_text_field.dart';
 import '../../widgets/two_tone_text.dart';
@@ -34,7 +33,7 @@ class _PluginStartCampaignState extends State<PluginStartCampaign> {
             return CustomScrollBody(
               isLoading: !state.hasData || state.data.isLoading,
               slivers: [
-                SliverAppBar(
+                const SliverAppBar(
                   floating: true,
                   snap: true,
                   backgroundColor: Colors.transparent,
@@ -42,10 +41,9 @@ class _PluginStartCampaignState extends State<PluginStartCampaign> {
                   flexibleSpace: FlexibleSpaceBar(
                     title: TwoToneText(
                       tag: "start_campaign_text",
-                      firstText: RemoteConfigurations.data["strings"]
-                          ["start_a"],
-                      secondText: RemoteConfigurations.data["strings"]
-                          ["campaign"],
+                      firstText: "Make a ",
+                      secondText: "Wishlist"
+                          ,
                     ),
                     centerTitle: true,
                   ),

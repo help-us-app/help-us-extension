@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:help_us_extension/pages/plugin_dashboard/plugin_dashboard_bloc.dart';
 import 'package:help_us_extension/pages/plugin_start_campaign/plugin_start_campaign.dart';
+import 'package:help_us_extension/pages/wrapper/wrapper.dart';
 import 'package:help_us_extension/widgets/custom_scroll_body.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -96,9 +97,12 @@ class _PluginDashboardState extends State<PluginDashboard> {
                               description:
                                   "${state.data.locations[index].address.addressLine1}\n ${state.data.locations[index].address.country}",
                               url: state.data.locations[index].logoUrl,
-                              onTap: () {
-                                bloc.setLocation(state.data.locations[index].id,
+                              onTap: () async {
+                                await bloc.setLocation(state.data.locations[index].id,
                                     widget.user.id);
+                                if (mounted) {
+                                  Navigator.of(context).pushReplacement(createRoute(const Wrapper()));
+                                }
                               },
                               selected: false,
                             );
@@ -164,6 +168,7 @@ class _PluginDashboardState extends State<PluginDashboard> {
                                   buttonText: 'Manage Campaigns',
                                   buttonColor: AppColors.secondary,
                                 ),
+                                if (state.data.user.authorizationCode != null)
                                 HelpUsButton(
                                   buttonText: "Edit Page",
                                   buttonColor: AppColors.secondary,

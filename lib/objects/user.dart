@@ -3,6 +3,7 @@ class User {
   String merchantId;
   String locationId;
   String accessToken;
+  String authorizationCode;
   String refreshToken;
   String expiresIn;
 
@@ -12,7 +13,8 @@ class User {
       this.locationId,
       this.accessToken,
       this.refreshToken,
-      this.expiresIn});
+      this.expiresIn,
+      this.authorizationCode});
 
   User.fromJson(Map<dynamic, dynamic> json) {
     id = json['id'];
@@ -21,6 +23,7 @@ class User {
     accessToken = json['access_token'];
     refreshToken = json['refresh_token'];
     expiresIn = json['expires_in'];
+    authorizationCode = json['authorization_code'];
   }
 
   Map<String, dynamic> toJson() {
@@ -31,6 +34,7 @@ class User {
     data['access_token'] = accessToken;
     data['refresh_token'] = refreshToken;
     data['expires_in'] = expiresIn;
+    data['authorization_code'] = authorizationCode;
     return data;
   }
 }

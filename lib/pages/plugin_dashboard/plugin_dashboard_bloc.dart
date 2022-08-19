@@ -43,7 +43,6 @@ class PluginDashboardBloc {
   setLocation(String locationId, String userId) async {
     setIsLoading(true);
     await Repository.setLocation(locationId, userId);
-    await updateUser(userId);
     setIsLoading(false);
   }
 

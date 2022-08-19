@@ -19,6 +19,14 @@ class _PluginAuthorizeState extends State<PluginAuthorize> {
   PluginAuthorizeBloc bloc = PluginAuthorizeBloc();
 
   @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _showSnackBar();
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: StreamBuilder<PluginAuthorizeState>(
@@ -92,5 +100,27 @@ class _PluginAuthorizeState extends State<PluginAuthorize> {
                     ),
                   ]);
             }));
+  }
+
+  void _showSnackBar() {
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: const Text(
+        "Sign in with a pre-populated test account?",
+      ),
+      action: SnackBarAction(
+        label: 'Sign-in',
+        onPressed: () async {
+          await bloc.authorizeSampleUser();
+          if (mounted) {
+            Navigator.of(context).pushReplacement(
+              createRoute(const Wrapper())
+          );
+          }
+        },
+      ),
+      duration: const Duration(seconds: 4),
+      dismissDirection: DismissDirection.down,
+    ));
   }
 }

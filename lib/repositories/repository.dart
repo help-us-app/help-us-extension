@@ -27,11 +27,11 @@ class Repository {
     }
   }
 
-  static createUser() async {
+  static createUser({User user}) async {
     try {
       Response response = await dio.post("${directusUrl}items/User",
           options: Options(headers: {"Authorization": "Bearer $directusToken"}),
-          data: {});
+          data: user == null ? {} : user.toJson());
       log("createUser");
       return User.fromJson(response.data["data"]);
     } catch (e) {

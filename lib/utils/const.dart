@@ -4,4 +4,6 @@ class Constant {
       "https://squareupsandbox.com/dashboard/locations/";
 
   static const String helpUsWebUrl = "https://help-us-app.com/";
+
+  static const String expiredDate = "2000-01-01T00:00:00Z";
 }

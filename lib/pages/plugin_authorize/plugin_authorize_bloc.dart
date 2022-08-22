@@ -34,7 +34,7 @@ class PluginAuthorizeBloc {
     }
 
     if (userId != null) {
-      Future.delayed(const Duration(microseconds: Constant.load), () {
+      Future.delayed(const Duration(milliseconds: Constant.load), () {
         launchUrlString("${Repository.herokuUrl}oauth/url?user_id=$userId");
       });
     }
